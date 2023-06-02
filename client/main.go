@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	pb "github.com/Raelhoff/GoProto/protofiles"
+	pb "github.com/Raelhoff/gRPC_GO/protofiles"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/types/known/timestamppb"
