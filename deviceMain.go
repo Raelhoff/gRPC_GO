@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	pb "github.com/Raelhoff/GoProto/protofiles"
+	pb "github.com/Raelhoff/gRPC_GO/protofiles"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
@@ -45,4 +45,5 @@ func main() {
 	fmt.Println("Marshalled proto data: ", body)
 	fmt.Println("Unmarshalled struct: ", p1)
 
+       fmt.Println("Sensors: ", p.Sensors[0].Type)
 }

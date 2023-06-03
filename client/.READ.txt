@@ -1,0 +1,9 @@
+go get -u github.com/gofiber/fiber/v2 go.mongodb.org/mongo-driver/mongo github.com/joho/godotenv github.com/go-playground/validator/v10
+
+go get github.com/klauspost/compress
+
+
+
+https://dev.to/hackmamba/build-a-rest-api-with-golang-and-mongodb-fiber-version-4la0
+
+https://cloud.mongodb.com/v2/64740a95e9222737f148bd56#/clusters

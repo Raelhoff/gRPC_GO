@@ -9,6 +9,7 @@ require (
 
 require (
 	github.com/Raelhoff/GoProto v0.0.0-20230601100914-deff40ec692b // indirect
+	github.com/Raelhoff/gRPC_GO v1.0.0 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	golang.org/x/net v0.8.0 // indirect
 	golang.org/x/sys v0.6.0 // indirect

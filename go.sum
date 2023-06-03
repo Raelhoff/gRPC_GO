@@ -2,6 +2,8 @@ github.com/Raelhoff/GoProto v0.0.0-20230601100042-4b6da91afb11 h1:uptVb8JTFCZMpM
 github.com/Raelhoff/GoProto v0.0.0-20230601100042-4b6da91afb11/go.mod h1:uJVd7DyBzeSRLvnco36f3+U7AcyW/ZtoR+m/wWxZ2Cg=
 github.com/Raelhoff/GoProto v0.0.0-20230601100914-deff40ec692b h1:7LI0Cu/u2UEIBOZ2x8FHyR9rXbJR5fQhP880jdcaUgc=
 github.com/Raelhoff/GoProto v0.0.0-20230601100914-deff40ec692b/go.mod h1:uJVd7DyBzeSRLvnco36f3+U7AcyW/ZtoR+m/wWxZ2Cg=
+github.com/Raelhoff/gRPC_GO v1.0.0 h1:YUZQWexpQdmxIASaetsGzcLP8Xw8N5uAifIWKN/G8XU=
+github.com/Raelhoff/gRPC_GO v1.0.0/go.mod h1:nKe72xP7rPEp5LXpYczziqTQBSNh+088xUN2mSnrFvU=
 github.com/golang/protobuf v1.5.0/go.mod h1:FsONVRAS9T7sI+LIUmWTfcYkHO4aIWwzhcaSAoJOfIk=
 github.com/golang/protobuf v1.5.3 h1:KhyjKVUg7Usr/dYsdSqoFveMYd5ko72D+zANwlG1mmg=
 github.com/golang/protobuf v1.5.3/go.mod h1:XVQd3VNwM+JqD3oG2Ue2ip4fOMUkwXdXDdiuN0vRsmY=

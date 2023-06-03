@@ -1,84 +1,33 @@
 package main
 
 import (
-	"log"
-
-	pb "github.com/Raelhoff/gRPC_GO/protofiles"
-	"golang.org/x/net/context"
-	"google.golang.org/grpc"
-	"google.golang.org/protobuf/types/known/timestamppb"
+    "fmt"
+    "fiber-mongo-api/configs" //add this
+    "fiber-mongo-api/routes" //add this
+    "github.com/gofiber/fiber/v2" 
+//xy	"golang.org/x/net/context"    
+//    pb "github.com/Raelhoff/gRPC_GO/protofiles"
+  //  "google.golang.org/grpc"
+//	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
-// grpc server address
-const address = "localhost:8000"
 
 func main() {
-	// Set up connection with the grpc server
-	conn, err := grpc.Dial(address, grpc.WithInsecure())
-	if err != nil {
-		log.Fatalf("Error while making connection, %v", err)
-	}
+    app := fiber.New()
 
-	// Create a client instance
-	c := pb.NewLoraTransactionClient(conn)
+    //run database
+    configs.ConnectDB()
 
-	// Lets invoke the remote function from client on the server
-	c.MakeTransaction(
-		context.Background(),
-		&pb.LoraRequest{
-			IdDevice:     17081990,
-			Id:           1234,
-			Input1:       0,
-			Input2:       0,
-			Output:       0,
-			AlarmBattery: false,
-			AlarmPower:   false,
-			SensorError:  false,
-			Sensors: []*pb.LoraRequest_Sensor{
-				{Type: 1, Value: 30},
-				{Type: 2, Value: 15},
-			},
-			LastUpdated: timestamppb.Now(),
-		},
-	)
+    // run gRPC
+    configs.ConnectGRPC()
+    
+  //  var conn * grpc.ClientConn  = configs.ReturnClientGRPC()
+   // client := pb.NewLoraTransactionClient(conn)
+    
+    routes.UserRoute(app) //add this
+    routes.DeviceRoute(app)
 
-	// Create a client instance
-	d := pb.NewListLoraTransactionClient(conn)
+    app.Listen(":3033")
+    fmt.Println("Http Server - Listen: 3033")
 
-	d.MakeListTransaction(
-		context.Background(),
-		&pb.ListLoraRequest{
-			ListDevice: []*pb.LoraRequest{
-				{
-					IdDevice:     10011990,
-					Id:           1234,
-					Input1:       0,
-					Input2:       0,
-					Output:       0,
-					AlarmBattery: false,
-					AlarmPower:   false,
-					SensorError:  false,
-					Sensors: []*pb.LoraRequest_Sensor{
-						{Type: 1, Value: 30},
-						{Type: 2, Value: 15},
-					},
-					LastUpdated: timestamppb.Now(),
-				}, {
-					IdDevice:     15011990,
-					Id:           1232334,
-					Input1:       0,
-					Input2:       0,
-					Output:       0,
-					AlarmBattery: false,
-					AlarmPower:   false,
-					SensorError:  true,
-					Sensors: []*pb.LoraRequest_Sensor{
-						{Type: 1, Value: 30},
-						{Type: 2, Value: 15},
-					},
-					LastUpdated: timestamppb.Now(),
-				},
-			},
-		},
-	)
 }
