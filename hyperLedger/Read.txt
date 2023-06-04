@@ -1,0 +1,7 @@
+./minifab ccup -v 1.0.0 -n smart -l go -r true -p ''
+
+./minifab invoke -n smart -p '"invoke","1234","1", "1", "0", "1","1","1","1","1","1","0"'
+./minifab invoke -n smart -p '"query","1234"'
+
+./minifab apprun -l go
+
