@@ -1,1 +1,7 @@
 https://dev.to/hackmamba/build-a-rest-api-with-golang-and-mongodb-fiber-version-4la0
+
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+sudo systemctl restart ntp

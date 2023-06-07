@@ -201,14 +201,25 @@ func (s *server) MakeTransaction(ctx context.Context, in *pb.LoraRequest) (*pb.L
 
 	resultInvoke, err := contract.SubmitTransaction("put", String(in.Id), String( in.Input1),  String( in.Input2),  String( in.Output), strconv.FormatBool(in.AlarmBattery), strconv.FormatBool(in.AlarmPower), strconv.FormatBool(in.SensorError), String (int32(temp)), String (int32(humid)), t.String(), "0")
 	if err != nil {
-		fmt.Printf("Failed to commit transaction: %v", err)
+		resultInvoke, err := contract.SubmitTransaction("invoke", String(in.Id), String( in.Input1),  String( in.Input2),  String( in.Output), strconv.FormatBool(in.AlarmBattery), strconv.FormatBool(in.AlarmPower), strconv.FormatBool(in.SensorError), String (int32(temp)), String (int32(humid)), t.String(), "0")
+		if err != nil {
+			fmt.Printf("Failed to commit transaction: %v", err)
+			return &pb.LoraResponse{Msg: "Failed to commit transaction", Confirmation: false}, nil
+		} else {
+			fmt.Println("Commit is successful - invoke")
+			fmt.Println(string(resultInvoke))
+			return &pb.LoraResponse{Msg: "Commit is successful", Confirmation: true}, nil
+		}
+
+		//fmt.Printf("Failed to commit transaction: %v", err)
+		//return &pb.LoraResponse{Msg: "Failed to commit transaction", Confirmation: false}, nil
 	} else {
 		fmt.Println("Commit is successful - invoke")
 		fmt.Println(string(resultInvoke))
 	}
 
 	// Returning a response of type Transaction Response
-	return &pb.LoraResponse{Confirmation: true}, nil
+	return &pb.LoraResponse{Msg: "Commit is successful", Confirmation: true}, nil
 }
 
 func (s *server) MakeListTransaction(ctx context.Context, in *pb.ListLoraRequest) (*pb.ListLoraResponse, error) {
