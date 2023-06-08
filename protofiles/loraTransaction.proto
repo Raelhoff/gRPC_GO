@@ -1,7 +1,6 @@
 syntax = "proto3";
 package protofiles;
 
-import "google/protobuf/timestamp.proto";
 
 option go_package = "./";
 
@@ -15,7 +14,7 @@ message LoraRequest {
   bool       alarm_power     =    7;
   bool       sensor_error    =    8;
   repeated   Sensor  sensors =    9;
-  google.protobuf.Timestamp   lastUpdated     =    10;    
+  string   lastUpdated       =    10;    
 
 
   message Sensor {
